@@ -1,0 +1,32 @@
+##
+GET http://localhost:8080/api/document
+Accept: application/json
+
+###
+
+POST http://localhost:8080/api/document
+Content-Type: application/json
+
+{
+  "name": "Arda Burak Atila",
+  "description": "description data",
+  "type": "document type",
+  "folderId": 6
+}
+
+###
+
+PUT http://localhost:8080/api/document
+Content-Type: application/json
+
+{
+  "name": "Arda Burak Atila",
+  "description": "description data",
+  "type": "document type",
+  "folderId": 6
+}
+
+###
+
+DELETE http://localhost:8080/api/document
+Accept: application/json
