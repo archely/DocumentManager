@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
   "name": "Arda Burak Atila",
-  "description": "description data",
+  "description": "description",
   "type": "document type",
   "folderId": 6
 }
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 {
   "name": "Arda Burak Atila",
-  "description": "description data",
+  "description": "description",
   "type": "document type",
   "folderId": 6
 }

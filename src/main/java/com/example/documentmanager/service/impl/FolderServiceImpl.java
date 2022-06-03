@@ -33,9 +33,7 @@ public class FolderServiceImpl implements FolderService {
             dto.setDescription(entity.getDescription());
             dto.setName(entity.getName());
             dto.setColor(entity.getColor());
-            if (entity.getFolder() != null) {
-                dto.setDocumentId(entity.getFolder().getId());
-            }
+            dto.setDocumentId(entity.getId());
             list.add(dto);
         });
         return list;

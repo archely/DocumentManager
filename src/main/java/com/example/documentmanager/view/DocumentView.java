@@ -37,6 +37,8 @@ public class DocumentView extends VerticalLayout {
         grid.addColumn(DocumentDTO::getName).setHeader("Name");
         grid.addColumn(DocumentDTO::getDescription).setHeader("Description");
         grid.addColumn(DocumentDTO::getType).setHeader("Document Type");
+        grid.addColumn(DocumentDTO::getFolderId).setHeader("Parent document ID");
+
 
         createButtonBarAndSelection(grid);
         add(grid);
@@ -71,7 +73,7 @@ public class DocumentView extends VerticalLayout {
                 form.setVisible(false);
             } catch (EntityNotFoundException e) {
                 e.printStackTrace();
-                Notification.show("Delete error");
+                Notification.show("Unexpected error");
             }
         });
         binder.bindInstanceFields(this);

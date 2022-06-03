@@ -31,7 +31,9 @@ public class DocumentServiceImpl implements DocumentService {
             dto.setId(documentEntity.getId());
             dto.setDescription(documentEntity.getDescription());
             dto.setName(documentEntity.getName());
-            documentEntity.setType(dto.getType());
+            dto.setType(documentEntity.getType());
+            dto.setFolderId(documentEntity.getId());
+
             list.add(dto);
         });
         return list;

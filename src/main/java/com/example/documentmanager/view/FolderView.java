@@ -26,6 +26,7 @@ public class FolderView extends VerticalLayout {
     private TextField name;
     private TextField description;
     private TextField color;
+
     private FolderDTO selectedDto = new FolderDTO();
 
     @PostConstruct
@@ -36,6 +37,7 @@ public class FolderView extends VerticalLayout {
         grid.addColumn(FolderDTO::getName).setHeader("Name");
         grid.addColumn(FolderDTO::getDescription).setHeader("Description");
         grid.addColumn(FolderDTO::getColor).setHeader("Folder color");
+        grid.addColumn(FolderDTO::getDocumentId).setHeader("Parent document ID");
 
 
 
@@ -53,9 +55,12 @@ public class FolderView extends VerticalLayout {
         description = new TextField();
         color = new TextField();
 
+
+
         form.add(new Text("Name"), name);
         form.add(new Text("Description"), description);
         form.add(new Text("Folder color"), color);
+
 
         Button button = new Button();
         button.setText("Save");
@@ -111,7 +116,7 @@ public class FolderView extends VerticalLayout {
                 grid.setItems(service.findAll());
             } catch (EntityNotFoundException e) {
                 e.printStackTrace();
-                Notification.show("Delete error");
+                Notification.show("Unexpected error");
             }
         });
         deleteButton.setVisible(false);

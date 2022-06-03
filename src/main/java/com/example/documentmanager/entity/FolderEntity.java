@@ -1,11 +1,8 @@
 package com.example.documentmanager.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Table(name = "project")
+@Table(name = "folder")
 @Entity
 public class FolderEntity extends CoreEntity {
 
@@ -13,25 +10,17 @@ public class FolderEntity extends CoreEntity {
     private String color;
 
 
-    @ManyToOne
-    private FolderEntity project;
-
-    public FolderEntity getFolder() {
-        return project;
-    }
-
-    public void setFolder(FolderEntity folder) {
-        this.project = folder;
-    }
-
 
     public String getColor() {
         return color;
     }
 
     public void setColor(String color) {
+
         this.color = color;
     }
+
+
 }
 
 

@@ -39,18 +39,22 @@ public class FolderDTO {
     }
 
     public String getColor() {
+
         return color;
     }
 
     public void setColor(String color) {
+
         this.color = color;
     }
 
     public Long getDocumentId() {
+
         return documentId;
     }
 
     public void setDocumentId(Long documentId) {
+
         this.documentId = documentId;
     }
 
