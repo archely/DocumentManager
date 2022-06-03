@@ -1,7 +1,8 @@
 package com.example.documentmanager.view;
 
+import com.example.documentmanager.model.DocumentDTO;
 import com.example.documentmanager.model.FolderDTO;
-import com.example.documentmanager.service.FolderService;
+import com.example.documentmanager.service.DocumentService;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -17,25 +18,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 
 @Route
-public class ProjectView extends VerticalLayout {
+public class DocumentView extends VerticalLayout {
 
     @Autowired
-    private FolderService service;
+    private DocumentService service;
     private VerticalLayout form = new VerticalLayout();
-    private Binder<FolderDTO> binder;
+    private Binder<DocumentDTO> binder;
     private TextField name;
     private TextField description;
-    private FolderDTO selectedDto = new FolderDTO();
+    private TextField type;
+    private DocumentDTO selectedDto = new DocumentDTO();
 
     @PostConstruct
     public void init() {
-        Grid<FolderDTO> grid = new Grid<>();
+        Grid<DocumentDTO> grid = new Grid<>();
         grid.setItems(service.findAll());
-        grid.addColumn(FolderDTO::getId).setHeader("ID");
-        grid.addColumn(FolderDTO::getName).setHeader("Name");
-        grid.addColumn(FolderDTO::getDescription).setHeader("Description");
-
-
+        grid.addColumn(DocumentDTO::getId).setHeader("ID");
+        grid.addColumn(DocumentDTO::getName).setHeader("Name");
+        grid.addColumn(DocumentDTO::getDescription).setHeader("Description");
+        grid.addColumn(DocumentDTO::getType).setHeader("Document Type");
 
         createButtonBarAndSelection(grid);
         add(grid);
@@ -44,14 +45,16 @@ public class ProjectView extends VerticalLayout {
 
     }
 
-    private void createForm(Grid<FolderDTO> projectDTOGrid) {
+    private void createForm(Grid<DocumentDTO> documentDTOGrid) {
         form.setVisible(false);
-        binder = new Binder<>(FolderDTO.class);
+        binder = new Binder<DocumentDTO>(DocumentDTO.class);
         name = new TextField();
         description = new TextField();
+        type = new TextField();
 
         form.add(new Text("Name"), name);
         form.add(new Text("Description"), description);
+        form.add(new Text("Document type"), type);
 
         Button button = new Button();
         button.setText("Save");
@@ -63,8 +66,8 @@ public class ProjectView extends VerticalLayout {
                     service.save(selectedDto);
 
                 }
-                projectDTOGrid.setItems(service.findAll());
-                selectedDto = new FolderDTO();
+                documentDTOGrid.setItems(service.findAll());
+                selectedDto = new DocumentDTO();
                 form.setVisible(false);
             } catch (EntityNotFoundException e) {
                 e.printStackTrace();
@@ -78,13 +81,13 @@ public class ProjectView extends VerticalLayout {
         add(form);
     }
 
-    private void createButtonBarAndSelection(Grid<FolderDTO> grid) {
+    private void createButtonBarAndSelection(Grid<DocumentDTO> grid) {
         HorizontalLayout layout = new HorizontalLayout();
 
         Button createButton = new Button();
         createButton.setText("Create new");
         createButton.addClickListener(buttonClickEvent -> {
-            selectedDto = new FolderDTO();
+            selectedDto = new DocumentDTO();
             binder.setBean(selectedDto);
             form.setVisible(true);
         });
