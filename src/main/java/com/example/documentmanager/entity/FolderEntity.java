@@ -20,7 +20,6 @@ public class FolderEntity extends CoreEntity {
         this.color = color;
     }
 
-
 }
 
 

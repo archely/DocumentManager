@@ -4,5 +4,5 @@ import com.example.documentmanager.entity.DocumentEntity;
 
 public interface DocumentRepository extends CoreRepository<DocumentEntity> {
 
-    Long countTasksForProject(Long projectId);
+    Long countDocumentForFolder(Long folderId);
 }

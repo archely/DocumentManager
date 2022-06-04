@@ -20,9 +20,9 @@ public class DocumentRepositoryImpl extends CoreRepositoryImpl<DocumentEntity> i
     }
 
     @Override
-    public Long countTasksForProject(Long projectId) {
-        TypedQuery<Long> query = entityManager.createQuery("select count(n) from DocumentEntity n where n.project.id=:projectId", Long.class);
-        query.setParameter("projectId", projectId);
+    public Long countDocumentForFolder(Long folderId) {
+        TypedQuery<Long> query = entityManager.createQuery(" select count(n) from DocumentEntity n where n.folder.id=:folderId ", Long.class);
+        query.setParameter("folderId", folderId);
         return query.getSingleResult();
     }
 }
