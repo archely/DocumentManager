@@ -2,12 +2,14 @@
 Arda_Burak_Atila_OL1BB5_VaadinProject
 
 For page
+
 `http://localhost:8080/ `
 
 Postgre Identification 
-`database: vaadin_project
-root username: postgres
-root password: Archely1307 `
+
+`database: vaadin_project`
+`root username: postgres`
+`root password: Archely1307 `
 
 Clone Github
 
